@@ -1,0 +1,38 @@
+<div class="form">
+    <ul class="questions">
+        <li class="list list-image required">
+            <div class="wrapper">
+                <div class="pre-question">{{parentQuestion}}</div>
+                <div class="question">
+                    <span>{{title}}</span>
+                </div>
+                <div class="content">
+                    <div class="content-wrapper">
+                        <ul class="container-options">
+                            <li ng-repeat="c in answers" ng-click="onUserKeyPress($event, c)" class="content-option option{{$index}}" ng-class="{ selected: isActive(c) !== -1 }">
+                                <a>
+                                    <input type="hidden" name="value" ng-model="selected"/>
+                                    <div class="tick-wrapper"></div>
+                                    <span class="tick"></span>
+                                    <div class="image-wrapper"><img ng-src="{{ c.image }}" alt="{{c.title}}"></div>
+                                    <div class="text">
+                                        <div class="label">
+                                            <div class="letter" ng-class="{ active: isActive(c) !== -1 }">
+                                                <span>{{c.key.toUpperCase()}}</span>
+                                            </div>
+                                            <div class="caption">
+                                                <strong>{{c.title}}<br> {{c.subtitle}}</strong>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <div ng-include="'/views/directives/okbutton.html'"></div>
+        <div ng-if="none" ng-include="'/views/directives/nonebutton.html'"></div>
+    </ul>
+</div>
